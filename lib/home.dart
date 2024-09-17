@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:for_portfolio/components/appbar.dart';
-import 'package:for_portfolio/components/contact_section.dart';
-import 'package:for_portfolio/components/download_button.dart';
-import 'package:for_portfolio/components/home_section.dart';
-import 'package:for_portfolio/components/experience_section.dart';
-import 'package:for_portfolio/components/skills_section.dart';
+import 'package:yadesh_portfolio/components/appbar.dart';
+import 'package:yadesh_portfolio/components/contact_section.dart';
+import 'package:yadesh_portfolio/components/download_button.dart';
+import 'package:yadesh_portfolio/components/experience_section.dart';
+import 'package:yadesh_portfolio/components/home_section.dart';
+import 'package:yadesh_portfolio/components/skills_section.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

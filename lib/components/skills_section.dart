@@ -14,11 +14,6 @@ class SkillsSection extends StatelessWidget {
           'assets/images/dart_icon.png',
           'assets/images/firebase_icon.png',
           'assets/images/figma_icon.png',
-          // 'assets/images/flutter_icon.png',
-          // 'assets/images/git_icon.png',
-          // 'assets/images/dart_icon.png',
-          // 'assets/images/firebase_icon.png',
-          // 'assets/images/figma_icon.png',
     ];
 
     final List<String> skills = [
@@ -27,11 +22,6 @@ class SkillsSection extends StatelessWidget {
       'Dart',
       'Firebase',
       'Figma',
-      // 'Flutter',
-      // 'Git',
-      // 'Dart',
-      // 'Firebase',
-      // 'Figma',
     ];
 
     int crossAxisCount;

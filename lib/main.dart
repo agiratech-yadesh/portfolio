@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:for_portfolio/home.dart';
+import 'package:yadesh_portfolio/home.dart';
 
 void main() {
   runApp(

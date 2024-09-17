@@ -9,10 +9,12 @@ class HomeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    print(screenHeight);
 
     return Container(
       key: sectionKey,
-      height: MediaQuery.of(context).size.height,
+      // height: MediaQuery.of(context).size.height,
       color: const Color(0XFFFAF6F0),
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -21,15 +23,15 @@ class HomeSection extends StatelessWidget {
               : screenWidth > 800
                   ? 100
                   : 20,
+                  vertical: 200
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 150),
               LayoutBuilder(
                 builder: (context, constraints) {
-                  if (constraints.maxWidth > 600) {
+                  if (constraints.maxWidth > 900) {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -55,7 +57,7 @@ class HomeSection extends StatelessWidget {
                       children: [
                         Image.asset(
                           'assets/images/landing.png',
-                          width: screenWidth * 0.6,
+                          width: screenWidth * 0.5,
                         ),
                         const SizedBox(height: 20),
                         introTextWidget(context),
@@ -64,6 +66,7 @@ class HomeSection extends StatelessWidget {
                   }
                 },
               ),
+
             ],
           ),
         ),
@@ -85,9 +88,9 @@ class HomeSection extends StatelessWidget {
             style: TextStyle(
               
 
-              fontSize: screenWidth > 600
+              fontSize: screenWidth > 900
                   ? 50
-                  : 30, // Adjust font size based on screen size
+                  : 30, 
               color: Colors.black,
               fontWeight: FontWeight.w200,
             ),
@@ -95,7 +98,7 @@ class HomeSection extends StatelessWidget {
               TextSpan(
                 text: 'YADESH KUMAR V',
                 style: TextStyle(
-                  fontSize: screenWidth > 600
+                  fontSize: screenWidth > 900
                       ? 50
                       : 30, // Adjust font size based on screen size
                   color: Colors.black,
@@ -111,7 +114,7 @@ class HomeSection extends StatelessWidget {
           text: TextSpan(
             text: "Flutter ",
             style: TextStyle(
-              fontSize: screenWidth > 600
+              fontSize: screenWidth > 900
                   ? 50
                   : 30, 
               color: Colors.black,
@@ -124,7 +127,7 @@ class HomeSection extends StatelessWidget {
                 text: 'Developer',
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
-                  fontSize: screenWidth > 600
+                  fontSize: screenWidth > 900
                       ? 50
                       : 30, 
                   color: Colors.black,
@@ -174,22 +177,36 @@ class HomeSection extends StatelessWidget {
     );
   }
 
-  Widget socialIconButton(String asset, String url) {
-    return IconButton(
-      style: IconButton.styleFrom(
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-      ),
-      onPressed: () async {
-        final Uri uri = Uri.parse(url);
+
+
+Widget socialIconButton(String asset, String url) {
+  return IconButton(
+    style: IconButton.styleFrom(
+      backgroundColor: Colors.black,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+    ),
+    onPressed: () async {
+      final Uri uri = Uri.parse(url);
+
+      // Handle mailto URLs separately
+      if (url.startsWith('mailto:')) {
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        } else {
+          throw 'Could not launch $url';
+        }
+      } else {
+        // Handle other URLs
         if (await canLaunchUrl(uri)) {
           await launchUrl(uri);
         }
-      },
-      icon: Image.asset(
-        asset,
-        width: 22,
-      ),
-    );
-  }
+      }
+    },
+    icon: Image.asset(
+      asset,
+      width: 22,
+    ),
+  );
+}
+
 }
