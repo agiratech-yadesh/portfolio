@@ -4,8 +4,8 @@ import 'package:yadesh_portfolio/components/contact_section.dart';
 import 'package:yadesh_portfolio/components/download_button.dart';
 import 'package:yadesh_portfolio/components/experience_section.dart';
 import 'package:yadesh_portfolio/components/home_section.dart';
+import 'package:yadesh_portfolio/components/projects_section.dart';
 import 'package:yadesh_portfolio/components/skills_section.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,10 +23,12 @@ class _HomePageState extends State<HomePage> {
 
   final GlobalKey section4Key = GlobalKey();
 
-  Color _appBarColor = const Color(0XFFFAF6F0); 
-  Color _textColor = Colors.black; 
-  Color _buttonTextColor = Colors.white; 
-  Color _buttonColor = Colors.black; 
+  final GlobalKey section5Key = GlobalKey();
+
+  Color _appBarColor = const Color(0XFFFAF6F0);
+  Color _textColor = Colors.black;
+  Color _buttonTextColor = Colors.white;
+  Color _buttonColor = Colors.black;
 
   void scrollToSection(GlobalKey key) {
     Scrollable.ensureVisible(
@@ -35,10 +37,6 @@ class _HomePageState extends State<HomePage> {
       curve: Curves.easeInOut,
     );
   }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +52,7 @@ class _HomePageState extends State<HomePage> {
         section2Key: section2Key,
         section3Key: section3Key,
         section4Key: section4Key,
+        section5Key: section5Key,
       ),
       endDrawer: isMobile
           ? Drawer(
@@ -75,9 +74,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const Spacer(),
                         Align(
-                          alignment: Alignment.bottomRight,
-                          child: MyDownloadButton(buttonColor: _buttonTextColor, buttonTextColor: _buttonColor)
-                        ),
+                            alignment: Alignment.bottomRight,
+                            child: MyDownloadButton(
+                                buttonColor: _buttonTextColor,
+                                buttonTextColor: _buttonColor)),
                       ],
                     ),
                   ),
@@ -139,6 +139,9 @@ class _HomePageState extends State<HomePage> {
             children: [
               HomeSection(sectionKey: section1Key),
               SkillsSection(sectionKey: section2Key),
+              ProjectsSection(
+                sectionKey: section5Key,
+              ),
               ExperienceSection(sectionKey: section3Key),
               ContactSection(sectionKey: section4Key),
             ],

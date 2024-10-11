@@ -5,35 +5,32 @@ import 'package:path_provider/path_provider.dart'; // for mobile
 import "package:universal_html/html.dart" as html;
 import 'package:yadesh_portfolio/components/download_button.dart'; // for web (universal_html)
 
-
-
 class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey section1Key;
   final GlobalKey section2Key;
   final GlobalKey section3Key;
   final GlobalKey section4Key;
+  final GlobalKey section5Key;
+
   final Color bgColor;
-    final Color textColor;
-        final Color buttonTextColor;
-        final Color buttonColor;
+  final Color textColor;
+  final Color buttonTextColor;
+  final Color buttonColor;
 
-
-
-  ResponsiveAppBar({
+  const ResponsiveAppBar({
+    super.key,
     required this.section1Key,
     required this.section2Key,
     required this.section3Key,
     required this.section4Key,
+    required this.section5Key,
     required this.bgColor,
     required this.textColor,
-        required this.buttonTextColor,
-        required this. buttonColor,
-
-
+    required this.buttonTextColor,
+    required this.buttonColor,
   });
 
-
-   Future<void> _downloadPdf(BuildContext context) async {
+  Future<void> _downloadPdf(BuildContext context) async {
     // Check platform
     if (io.Platform.isAndroid || io.Platform.isIOS) {
       // For Mobile (Android, iOS)
@@ -64,7 +61,6 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       iconTheme: IconThemeData(color: textColor),
-      
       backgroundColor: bgColor,
       elevation: 0,
       toolbarHeight: 100,
@@ -87,14 +83,13 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-                               SizedBox(width: MediaQuery.of(context).size.width * 0.08),
-
+        SizedBox(width: MediaQuery.of(context).size.width * 0.08),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               onPressed: () => scrollToSection(section1Key),
-              icon:  Text(
+              icon: Text(
                 'ABOUT',
                 style: TextStyle(
                   color: textColor,
@@ -103,10 +98,10 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-             SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
             IconButton(
               onPressed: () => scrollToSection(section2Key),
-              icon:  Text(
+              icon: Text(
                 'SKILLS',
                 style: TextStyle(
                   color: textColor,
@@ -115,10 +110,22 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-             SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+            IconButton(
+              onPressed: () => scrollToSection(section5Key),
+              icon: Text(
+                'Projects',
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
             IconButton(
               onPressed: () => scrollToSection(section3Key),
-              icon:  Text(
+              icon: Text(
                 'EXPERIENCE',
                 style: TextStyle(
                   color: textColor,
@@ -127,10 +134,10 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-             SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
             IconButton(
               onPressed: () => scrollToSection(section4Key),
-              icon:  Text(
+              icon: Text(
                 'CONTACT',
                 style: TextStyle(
                   color: textColor,
@@ -139,9 +146,11 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-                       SizedBox(width: MediaQuery.of(context).size.width * 0.08),
-
-         MyDownloadButton(buttonColor: buttonColor, buttonTextColor: buttonTextColor, )
+            SizedBox(width: MediaQuery.of(context).size.width * 0.08),
+            MyDownloadButton(
+              buttonColor: buttonColor,
+              buttonTextColor: buttonTextColor,
+            )
           ],
         ),
       ],
@@ -164,10 +173,10 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(100);
 }
 
-
 void scrollToSection(GlobalKey key) {
- Scrollable.ensureVisible(
-      key.currentContext!,
-      duration: const Duration(seconds: 1),
-      curve: Curves.easeInOut,
-    );}
+  Scrollable.ensureVisible(
+    key.currentContext!,
+    duration: const Duration(seconds: 1),
+    curve: Curves.easeInOut,
+  );
+}

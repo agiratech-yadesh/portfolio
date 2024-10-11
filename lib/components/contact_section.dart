@@ -207,17 +207,20 @@ class ContactSection extends StatelessWidget {
               alignment: AlignmentDirectional.bottomEnd,
               child: Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 width: double.maxFinite,
-                height: 80,
+                height: MediaQuery.of(context).size.height * 0.08,
                 color: const Color(0XFFF4DFC8),
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
+                      textAlign: TextAlign.center,
                       'Feel free to reach out for collaborations or just a friendly chat!',
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
                     ),
                     SizedBox(
                       height: 5,
@@ -225,7 +228,9 @@ class ContactSection extends StatelessWidget {
                     Text(
                       '© Yadesh Kumar V 2024.',
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
                     ),
                   ],
                 ),
@@ -236,6 +241,7 @@ class ContactSection extends StatelessWidget {
       ),
     );
   }
+
   Widget introTextWidget(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
@@ -244,26 +250,35 @@ class ContactSection extends StatelessWidget {
       children: [
         RichText(
           textDirection: TextDirection.rtl,
-          text: TextSpan(
+          text: const TextSpan(
             text: "Let's ",
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 50,
               color: Colors.white,
               fontWeight: FontWeight.w300,
             ),
             children: <TextSpan>[
               TextSpan(
-                text: 'talk ',
+                text: 'talk  ',
                 style: TextStyle(
+                  fontStyle: FontStyle.italic,
                   fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  foreground: Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = .3
-                    ..color = Colors.white,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w200,
                 ),
               ),
-              const TextSpan(
+              // TextSpan(
+              //   text: 'talk ',
+              //   style: TextStyle(
+              //     fontSize: 50,
+              //     fontWeight: FontWeight.bold,
+              //     foreground: Paint()
+              //       ..style = PaintingStyle.stroke
+              //       ..strokeWidth = .3
+              //       ..color = Colors.white,
+              //   ),
+              // ),
+              TextSpan(
                 text: "for",
                 style: TextStyle(
                   fontSize: 50,

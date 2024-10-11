@@ -38,7 +38,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
         padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding2),
         child: Column(
           children: [
-                        // const SizedBox(height: 100),
+            // const SizedBox(height: 100),
 
             RichText(
               textDirection: TextDirection.rtl,

@@ -10,10 +10,10 @@ class SkillsSection extends StatelessWidget {
 
     final List<String> icons = [
       'assets/images/flutter_icon.png',
-          'assets/images/git_icon.png',
-          'assets/images/dart_icon.png',
-          'assets/images/firebase_icon.png',
-          'assets/images/figma_icon.png',
+      'assets/images/git_icon.png',
+      'assets/images/dart_icon.png',
+      'assets/images/firebase_icon.png',
+      'assets/images/figma_icon.png',
     ];
 
     final List<String> skills = [
@@ -26,29 +26,24 @@ class SkillsSection extends StatelessWidget {
 
     int crossAxisCount;
     double padding;
-        double padding2;
-
+    double padding2;
 
     if (screenWidth > 1200) {
       crossAxisCount = 5;
       padding = 200;
-            padding2 = 100;
-
+      padding2 = 100;
     } else if (screenWidth > 800) {
       crossAxisCount = 4;
       padding = 100;
-            padding2 = 50;
-
+      padding2 = 50;
     } else if (screenWidth > 600) {
       crossAxisCount = 2;
       padding = 50;
-            padding2 = 25;
-
+      padding2 = 25;
     } else {
       crossAxisCount = 2;
       padding = 20;
-            padding2 = 10;
-
+      padding2 = 10;
     }
 
     return Container(
@@ -64,8 +59,8 @@ class SkillsSection extends StatelessWidget {
               textDirection: TextDirection.rtl,
               text: TextSpan(
                 text: "My ",
-                style:  TextStyle(
-                      fontSize: screenWidth > 600 ? 50 : 30,
+                style: TextStyle(
+                  fontSize: screenWidth > 600 ? 50 : 30,
                   color: Colors.black,
                   fontWeight: FontWeight.w200,
                 ),
@@ -96,7 +91,9 @@ class SkillsSection extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      color: (index == 1 || index == 8) ? const Color(0XFFF4EAE0) : Colors.black,
+                      color: (index == 1 || index == 8)
+                          ? const Color(0XFFF4EAE0)
+                          : Colors.black,
                       border: Border.all(width: 0.6, color: Colors.black),
                       borderRadius: BorderRadius.circular(4),
                     ),
@@ -108,14 +105,20 @@ class SkillsSection extends StatelessWidget {
                             icons[index],
                             width: 50,
                             height: 60,
-                      color: (index == 1 || index == 8) ? Colors.black : Colors.white,
+                            color: (index == 1 || index == 8)
+                                ? Colors.black
+                                : Colors.white,
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(
+                            height: 20,
+                          ),
                           Text(
                             skills[index],
                             style: TextStyle(
                               fontSize: 18,
-                      color: (index == 1 || index == 8) ? Colors.black : Colors.white,
+                              color: (index == 1 || index == 8)
+                                  ? Colors.black
+                                  : Colors.white,
                             ),
                           ),
                         ],

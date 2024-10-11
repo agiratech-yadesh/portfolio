@@ -9,8 +9,6 @@ class HomeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
-    print(screenHeight);
 
     return Container(
       key: sectionKey,
@@ -18,13 +16,12 @@ class HomeSection extends StatelessWidget {
       color: const Color(0XFFFAF6F0),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: screenWidth > 1200
-              ? 200
-              : screenWidth > 800
-                  ? 100
-                  : 20,
-                  vertical: 200
-        ),
+            horizontal: screenWidth > 1200
+                ? 20
+                : screenWidth > 800
+                    ? 100
+                    : 20,
+            vertical: 120),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -66,7 +63,6 @@ class HomeSection extends StatelessWidget {
                   }
                 },
               ),
-
             ],
           ),
         ),
@@ -83,14 +79,9 @@ class HomeSection extends StatelessWidget {
         RichText(
           textDirection: TextDirection.rtl,
           text: TextSpan(
-            
             text: "Hello I'am ",
             style: TextStyle(
-              
-
-              fontSize: screenWidth > 900
-                  ? 50
-                  : 30, 
+              fontSize: screenWidth > 900 ? 50 : 30,
               color: Colors.black,
               fontWeight: FontWeight.w200,
             ),
@@ -114,22 +105,16 @@ class HomeSection extends StatelessWidget {
           text: TextSpan(
             text: "Flutter ",
             style: TextStyle(
-              fontSize: screenWidth > 900
-                  ? 50
-                  : 30, 
+              fontSize: screenWidth > 900 ? 50 : 30,
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
             children: <TextSpan>[
-
-
-               TextSpan(
+              TextSpan(
                 text: 'Developer',
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
-                  fontSize: screenWidth > 900
-                      ? 50
-                      : 30, 
+                  fontSize: screenWidth > 900 ? 50 : 30,
                   color: Colors.black,
                   fontWeight: FontWeight.w200,
                 ),
@@ -139,9 +124,7 @@ class HomeSection extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          width: screenWidth > 800
-              ? 700
-              : screenWidth * 0.9, 
+          width: screenWidth > 800 ? 700 : screenWidth * 0.9,
           child: const Text(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Integer nec velit vitae libero blandit consequat. Cras pharetra eros ac urna molestie, in vehicula lectus venenatis. Proin posuere, turpis at convallis scelerisque, purus sapien lacinia orci, eget malesuada felis sapien nec libero.',
             textDirection: TextDirection.rtl,
@@ -149,7 +132,7 @@ class HomeSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        socialIconsRow(context), 
+        socialIconsRow(context),
       ],
     );
   }
@@ -158,9 +141,7 @@ class HomeSection extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return SizedBox(
-      width: screenWidth > 800
-          ? 700
-          : screenWidth * 0.9, 
+      width: screenWidth > 800 ? 700 : screenWidth * 0.9,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -177,36 +158,33 @@ class HomeSection extends StatelessWidget {
     );
   }
 
+  Widget socialIconButton(String asset, String url) {
+    return IconButton(
+      style: IconButton.styleFrom(
+        backgroundColor: Colors.black,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      ),
+      onPressed: () async {
+        final Uri uri = Uri.parse(url);
 
-
-Widget socialIconButton(String asset, String url) {
-  return IconButton(
-    style: IconButton.styleFrom(
-      backgroundColor: Colors.black,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-    ),
-    onPressed: () async {
-      final Uri uri = Uri.parse(url);
-
-      // Handle mailto URLs separately
-      if (url.startsWith('mailto:')) {
-        if (await canLaunchUrl(uri)) {
-          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        // Handle mailto URLs separately
+        if (url.startsWith('mailto:')) {
+          if (await canLaunchUrl(uri)) {
+            await launchUrl(uri, mode: LaunchMode.externalApplication);
+          } else {
+            throw 'Could not launch $url';
+          }
         } else {
-          throw 'Could not launch $url';
+          // Handle other URLs
+          if (await canLaunchUrl(uri)) {
+            await launchUrl(uri);
+          }
         }
-      } else {
-        // Handle other URLs
-        if (await canLaunchUrl(uri)) {
-          await launchUrl(uri);
-        }
-      }
-    },
-    icon: Image.asset(
-      asset,
-      width: 22,
-    ),
-  );
-}
-
+      },
+      icon: Image.asset(
+        asset,
+        width: 22,
+      ),
+    );
+  }
 }
