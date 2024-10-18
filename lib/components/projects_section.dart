@@ -26,7 +26,7 @@ class ProjectsSection extends StatelessWidget {
 
     return Container(
       key: sectionKey,
-      color: Colors.amber,
+      color: Colors.black,
       width: MediaQuery.of(context).size.width,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding2),
@@ -62,12 +62,13 @@ class ProjectsSection extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     flex: 1,
                     child: Container(
                       width: 300,
-                      height: 200,
+                      height: 300,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30),
@@ -133,6 +134,7 @@ class ProjectsSection extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Expanded(
                     flex: 1,
@@ -186,7 +188,7 @@ class ProjectsSection extends StatelessWidget {
                     flex: 1,
                     child: Container(
                       width: 300,
-                      height: 200,
+                      height: 300,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30),
@@ -194,6 +196,76 @@ class ProjectsSection extends StatelessWidget {
                       child: const Center(child: Text('image')),
                     ),
                   ),
+                ],
+              ),
+            ),
+
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: 300,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: const Center(child: Text('image')),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 60,
+                  ),
+                  const Expanded(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        //count
+
+                        Text(
+                          '01',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w600),
+                        ),
+
+                        SizedBox(
+                          height: 10,
+                        ),
+
+                        //title
+
+                        Text(
+                          'To-Do, Note App',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w600),
+                        ),
+
+                        SizedBox(
+                          width: 500,
+                          height: 200,
+                          child: Text(
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra, nunc in volutpat scelerisque, justo est aliquam nisi, eget dictum justo odio at lectus. Curabitur et libero nisi. Aliquam erat volutpat. Ut lobortis turpis nec mauris gravida, id porttitor magna efficitur. Etiam dapibus efficitur enim.',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            softWrap: true,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

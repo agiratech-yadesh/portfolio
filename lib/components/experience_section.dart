@@ -16,8 +16,8 @@ class _ExperienceSectionState extends State<ExperienceSection> {
     double padding2;
 
     if (screenWidth > 1200) {
-      padding = 200;
-      padding2 = 100;
+      padding = 100;
+      padding2 = 50;
     } else if (screenWidth > 800) {
       padding = 100;
       padding2 = 50;
@@ -63,7 +63,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
               ),
             ),
             const SizedBox(
-              height: 100,
+              height: 50,
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),

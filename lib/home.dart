@@ -94,6 +94,12 @@ class _HomePageState extends State<HomePage> {
                         Navigator.of(context).pop();
                       }),
                   ListTile(
+                      title: const Text('PROJECTS'),
+                      onTap: () {
+                        scrollToSection(section5Key);
+                        Navigator.of(context).pop();
+                      }),
+                  ListTile(
                       title: const Text('EXPERIENCE'),
                       onTap: () {
                         scrollToSection(section3Key);
@@ -113,7 +119,7 @@ class _HomePageState extends State<HomePage> {
         onNotification: (scrollNotification) {
           // Get the position of the section 3 key
           final RenderBox section3Box =
-              section3Key.currentContext?.findRenderObject() as RenderBox;
+              section5Key.currentContext?.findRenderObject() as RenderBox;
           final offset = section3Box.localToGlobal(Offset.zero).dy;
 
           // If the section 3 is reached, change the app bar color

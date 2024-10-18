@@ -30,8 +30,8 @@ class SkillsSection extends StatelessWidget {
 
     if (screenWidth > 1200) {
       crossAxisCount = 5;
-      padding = 200;
-      padding2 = 100;
+      padding = 100;
+      padding2 = 50;
     } else if (screenWidth > 800) {
       crossAxisCount = 4;
       padding = 100;

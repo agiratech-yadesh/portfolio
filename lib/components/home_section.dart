@@ -21,7 +21,7 @@ class HomeSection extends StatelessWidget {
                 : screenWidth > 800
                     ? 100
                     : 20,
-            vertical: 120),
+            vertical: 130),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +35,7 @@ class HomeSection extends StatelessWidget {
                         Flexible(
                           flex: 1,
                           child: Image.asset(
-                            'assets/images/landing.png',
+                            'assets/images/landing_image.png',
                             width: screenWidth * 0.3,
                           ),
                         ),
@@ -53,7 +53,7 @@ class HomeSection extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/landing.png',
+                          'assets/images/landing_image.png',
                           width: screenWidth * 0.5,
                         ),
                         const SizedBox(height: 20),

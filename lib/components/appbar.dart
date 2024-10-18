@@ -114,7 +114,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
             IconButton(
               onPressed: () => scrollToSection(section5Key),
               icon: Text(
-                'Projects',
+                'PROJECTS',
                 style: TextStyle(
                   color: textColor,
                   fontSize: 20,
