@@ -42,46 +42,41 @@ class MyDownloadButton extends StatelessWidget {
     } else {
       // Mobile platform (Android/iOS)
 
+      // Request storage permission
+      // var status = await checkAndRequestPermission();
 
+      // if (status.isGranted) {
+      try {
+        // Get the Downloads directory
+        final directory = await getExternalStorageDirectory();
+        final downloadsDirectory = io.Directory('${directory!.path}/Download');
+        if (!await downloadsDirectory.exists()) {
+          await downloadsDirectory.create(recursive: true);
+        }
 
-  // Request storage permission
-  // var status = await checkAndRequestPermission();
+        final file = io.File("${downloadsDirectory.path}/yadesh's_resume.pdf");
 
-  // if (status.isGranted) {
-    try {
-      // Get the Downloads directory
-      final directory = await getExternalStorageDirectory();
-      final downloadsDirectory = io.Directory('${directory!.path}/Download');
-      if (!await downloadsDirectory.exists()) {
-        await downloadsDirectory.create(recursive: true);
-      }
+        // Write PDF data to file
+        await file.writeAsBytes(pdfData);
 
-      final file = io.File("${downloadsDirectory.path}/yadesh's_resume.pdf");
+        Navigator.of(context).pop();
 
-      // Write PDF data to file
-      await file.writeAsBytes(pdfData);
-
-                                  Navigator.of(context).pop();
-
-
-      // Show success SnackBar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Resume downloaded successfully'),
-          behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
-          backgroundColor: Colors.green,
-          duration: const Duration(seconds: 5),
-          action: SnackBarAction(
-            textColor: Colors.white,
-            
-            label: 'Open',
-            onPressed: () async {
-
-              final result = await OpenFile.open(file.path);
+        // Show success SnackBar
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Resume downloaded successfully'),
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            backgroundColor: Colors.green,
+            duration: const Duration(seconds: 5),
+            action: SnackBarAction(
+              textColor: Colors.white,
+              label: 'Open',
+              onPressed: () async {
+                final result = await OpenFile.open(file.path);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: const Text('Failed to open file'),
@@ -94,46 +89,42 @@ class MyDownloadButton extends StatelessWidget {
                     duration: const Duration(seconds: 3),
                   ),
                 );
-              
-            },
+              },
+            ),
           ),
-        ),
-      );
-    } catch (e) {
-      // Show error SnackBar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Failed to download resume'),
-          behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
+        );
+      } catch (e) {
+        // Show error SnackBar
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Failed to download resume'),
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 3),
           ),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 3),
-        ),
-      );
+        );
+      }
+      // } else {
+      //   // Show permission request SnackBar
+      //   ScaffoldMessenger.of(context).showSnackBar(
+      //     SnackBar(
+      //       content: const Text('Storage permission is required'),
+      //       behavior: SnackBarBehavior.floating,
+      //       margin: const EdgeInsets.all(20),
+      //       shape: RoundedRectangleBorder(
+      //         borderRadius: BorderRadius.circular(4),
+      //       ),
+      //       backgroundColor: Colors.red,
+      //       duration: const Duration(seconds: 3),
+      //     ),
+      //   );
+      // }
     }
-  // } else {
-  //   // Show permission request SnackBar
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     SnackBar(
-  //       content: const Text('Storage permission is required'),
-  //       behavior: SnackBarBehavior.floating,
-  //       margin: const EdgeInsets.all(20),
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.circular(4),
-  //       ),
-  //       backgroundColor: Colors.red,
-  //       duration: const Duration(seconds: 3),
-  //     ),
-  //   );
-  // }
-}
-
-
-
-    }
+  }
 
   @override
   Widget build(BuildContext context) {

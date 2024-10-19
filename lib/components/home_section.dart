@@ -20,11 +20,11 @@ class HomeSection extends StatelessWidget {
                 ? 20
                 : screenWidth > 800
                     ? 100
-                    : 20,
+                    : 10,
             vertical: 130),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               LayoutBuilder(
                 builder: (context, constraints) {
@@ -50,13 +50,13 @@ class HomeSection extends StatelessWidget {
                     );
                   } else {
                     return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Image.asset(
                           'assets/images/landing_image.png',
                           width: screenWidth * 0.5,
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 60),
                         introTextWidget(context),
                       ],
                     );

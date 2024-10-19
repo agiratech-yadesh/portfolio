@@ -140,17 +140,19 @@ class _HomePageState extends State<HomePage> {
           }
           return true;
         },
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              HomeSection(sectionKey: section1Key),
-              SkillsSection(sectionKey: section2Key),
-              ProjectsSection(
-                sectionKey: section5Key,
-              ),
-              ExperienceSection(sectionKey: section3Key),
-              ContactSection(sectionKey: section4Key),
-            ],
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                HomeSection(sectionKey: section1Key),
+                SkillsSection(sectionKey: section2Key),
+                ProjectsSection(
+                  sectionKey: section5Key,
+                ),
+                ExperienceSection(sectionKey: section3Key),
+                ContactSection(sectionKey: section4Key),
+              ],
+            ),
           ),
         ),
       ),

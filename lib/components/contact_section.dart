@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key, required this.sectionKey});
@@ -143,7 +142,7 @@ class ContactSection extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         const TextField(
                           style: TextStyle(color: Colors.white),
@@ -153,7 +152,7 @@ class ContactSection extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         const TextField(
                           style: TextStyle(color: Colors.white),
@@ -171,7 +170,7 @@ class ContactSection extends StatelessWidget {
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
                         Align(
                           alignment: Alignment.topLeft,
                           child: ElevatedButton(
@@ -193,9 +192,9 @@ class ContactSection extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
                         introTextWidget(context),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   );
@@ -204,33 +203,64 @@ class ContactSection extends StatelessWidget {
             ),
             const Spacer(),
             Align(
-              alignment: AlignmentDirectional.bottomEnd,
               child: Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                 width: double.maxFinite,
-                height: MediaQuery.of(context).size.height * 0.08,
+                // height: MediaQuery.of(context).size.height * 0.1,
                 color: const Color(0XFFF4DFC8),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       textAlign: TextAlign.center,
                       'Feel free to reach out for collaborations or just a friendly chat!',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 12),
+                          fontSize: screenWidth >= 900 ? 18 : 14),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Text(
-                      '© Yadesh Kumar V 2024.',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          textAlign: TextAlign.center,
+                          'Build using',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: screenWidth >= 900 ? 18 : 14),
+                        ),
+                        const SizedBox(
+                          width: 2,
+                        ),
+                        Image.asset(
+                          'assets/images/flutterLogo.png',
+                          width: screenWidth >= 900 ? 20 : 16,
+                        ),
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Text(
+                          ' - Yadesh Kumar V 2024',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: screenWidth >= 900 ? 18 : 14),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),
@@ -267,17 +297,6 @@ class ContactSection extends StatelessWidget {
                   fontWeight: FontWeight.w200,
                 ),
               ),
-              // TextSpan(
-              //   text: 'talk ',
-              //   style: TextStyle(
-              //     fontSize: 50,
-              //     fontWeight: FontWeight.bold,
-              //     foreground: Paint()
-              //       ..style = PaintingStyle.stroke
-              //       ..strokeWidth = .3
-              //       ..color = Colors.white,
-              //   ),
-              // ),
               TextSpan(
                 text: "for",
                 style: TextStyle(
@@ -315,46 +334,6 @@ class ContactSection extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  Widget socialIconsRow(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
-    return SizedBox(
-      width: screenWidth > 800 ? 700 : screenWidth * 0.9,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          socialIconButton('assets/images/linkedin.png',
-              'https://www.linkedin.com/in/yadesh-kumar-5649791b4/'),
-          const SizedBox(width: 18),
-          socialIconButton('assets/images/github.png',
-              'https://github.com/agiratech-yadesh'),
-          const SizedBox(width: 18),
-          socialIconButton(
-              'assets/images/mail.png', 'mailto:yadeshkumar54@gmail.com'),
-        ],
-      ),
-    );
-  }
-
-  Widget socialIconButton(String asset, String url) {
-    return IconButton(
-      style: IconButton.styleFrom(
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      ),
-      onPressed: () async {
-        final Uri uri = Uri.parse(url);
-        if (await canLaunchUrl(uri)) {
-          await launchUrl(uri);
-        }
-      },
-      icon: Image.asset(
-        asset,
-        width: 22,
-      ),
     );
   }
 }

@@ -83,7 +83,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(width: MediaQuery.of(context).size.width * 0.08),
+        SizedBox(width: MediaQuery.of(context).size.width * 0.02),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -146,7 +146,7 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.08),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.02),
             MyDownloadButton(
               buttonColor: buttonColor,
               buttonTextColor: buttonTextColor,
