@@ -5,6 +5,7 @@ import 'dart:io' as io; // For mobile platforms
 import 'package:path_provider/path_provider.dart'; // For saving files on mobile
 import 'package:permission_handler/permission_handler.dart';
 import 'package:universal_html/html.dart' as html;
+import 'package:yadesh_portfolio/components/progress_indicator.dart';
 
 class MyDownloadButton extends StatelessWidget {
   final Color buttonColor;
@@ -129,7 +130,14 @@ class MyDownloadButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () => _downloadPdf(context),
+      onPressed: () {
+        ProgressCircle circle = ProgressCircle(context);
+        circle.showProgressBar();
+
+        _downloadPdf(context);
+
+        circle.hideProgressBar();
+      },
       style: TextButton.styleFrom(
         backgroundColor: buttonColor,
         shape: RoundedRectangleBorder(

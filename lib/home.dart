@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:yadesh_portfolio/components/appbar.dart';
 import 'package:yadesh_portfolio/components/contact_section.dart';
@@ -41,6 +43,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final bool isMobile = MediaQuery.of(context).size.width < 900;
+    final double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: ResponsiveAppBar(
@@ -151,6 +154,68 @@ class _HomePageState extends State<HomePage> {
                 ),
                 ExperienceSection(sectionKey: section3Key),
                 ContactSection(sectionKey: section4Key),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                  width: double.maxFinite,
+                  // height: MediaQuery.of(context).size.height * 0.1,
+                  color: const Color(0XFFF4DFC8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        textAlign: TextAlign.center,
+                        'Feel free to reach out for collaborations or just a friendly chat!',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: screenWidth >= 900 ? 16 : 14),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            textAlign: TextAlign.center,
+                            'Build using',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: screenWidth >= 900 ? 16 : 14),
+                          ),
+                          const SizedBox(
+                            width: 2,
+                          ),
+                          Image.asset(
+                            'assets/images/flutterLogo.png',
+                            width: screenWidth >= 900 ? 20 : 16,
+                          ),
+                          const SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            ' - Yadesh Kumar V 2024',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: screenWidth >= 900 ? 16 : 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
